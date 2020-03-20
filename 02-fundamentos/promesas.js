@@ -51,15 +51,13 @@ let getSalario = empleado => {
   });
 };
 
-getEmpleado(4).then(
-  empleado => {
-    // console.log("Empleado de BD", empleado);
-    getSalario(empleado).then(
-      resp => console.log(`El salario de ${resp.nombre} es de ${resp.salario}`),
-      err => console.log(err)
-    );
-  },
-  err => {
+getEmpleado(10)
+  .then(empleado => {
+    return getSalario(empleado);
+  })
+  .then(resp => {
+    console.log(`El salario de ${resp.nombre} es de ${resp.salario}`);
+  })
+  .catch(err => {
     console.log(err);
-  }
-);
+  });
